@@ -1,9 +1,9 @@
 import java.util.*;
 class Main {
-  public static ArrayList<Player> t1=new ArrayList<Player>();
-  public static ArrayList<Player> t2=new ArrayList<Player>();
-  public static ArrayList<Player> t3=new ArrayList<Player>();
-  public static ArrayList<Player> t4=new ArrayList<Player>();
+  public static ArrayList<Player> t1=new ArrayList<>();
+  public static ArrayList<Player> t2=new ArrayList<>();
+  public static ArrayList<Player> t3=new ArrayList<>();
+  public static ArrayList<Player> t4=new ArrayList<>();
   public static void main(String[] args) {
     
     Scanner input = new Scanner(System.in);
@@ -12,11 +12,11 @@ class Main {
     if(yn(input.nextLine())){
       System.out.println("Awesome! Please wait while we prepare...");
       generatePlayers();
-      for(int i=0;i<t1.size();i++){
-        System.out.println(t1.get(i));
+      for(Player p:t1){
+        System.out.println(p);
       }
-      for(int i=0;i<t2.size();i++){
-        System.out.println(t2.get(i));
+      for(Player p:t2){
+        System.out.println(p);
       }
       
     }
@@ -64,10 +64,7 @@ class Main {
   public static boolean eq(){
     Scanner i = new Scanner(System.in);
     System.out.println("Do you want to exit?");
-    if(yn(i.nextLine())){
-      return true;
-    }
-    return false;
+    return yn(i.nextLine());
   }
   public static String randomName(){
     String[] fns={"James","Robert","John","Michael","David","William","Richard","Joseph","Thomas","Daniel","Anthony","Mark","Steven","Paul","Andrew","George","Timothy","Jason","Ryan","Jacob","Gary","Eric","Larry","Scott","Justin","Frank","Brandon","Jack","Dennis","Jerry","Bob","Jeff","Lalith","Bryan"};
