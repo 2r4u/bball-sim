@@ -1,17 +1,18 @@
 import java.util.*;
+import java.lang.Math;
 class Main {
   public static Scanner input = new Scanner(System.in);
   public static int pteam=0;
   public static boolean isRunning;
-  public static ArrayList<Player> warriors=new ArrayList<>();
+  public static ArrayList<Player> w=new ArrayList<>();
   public static ArrayList<Integer> wovr=new ArrayList<>();
-  public static ArrayList<Player> lakers=new ArrayList<>();
+  public static ArrayList<Player> l=new ArrayList<>();
   public static ArrayList<Integer> lovr=new ArrayList<>();
 
-  public static ArrayList<Player> grizzlies=new ArrayList<>();
+  public static ArrayList<Player> g=new ArrayList<>();
   public static ArrayList<Integer> govr=new ArrayList<>();
 
-  public static ArrayList<Player> nuggets=new ArrayList<>();
+  public static ArrayList<Player> n=new ArrayList<>();
   public static ArrayList<Integer> novr=new ArrayList<>();
 
   public static void main(String[] args) {
@@ -22,55 +23,56 @@ class Main {
     if(yn(input.nextLine())){
       System.out.println("Awesome! Please wait while we prepare...");
       generatePlayers();
-      for(Player p:warriors){
+      for(Player p:w){
         wovr.add(p.getOverall());
       }
-      for(Player p:lakers){
+      for(Player p:l){
         lovr.add(p.getOverall());
       }
-      for(Player p:grizzlies){
+      for(Player p:g){
         govr.add(p.getOverall());
       }
-      for(Player p:nuggets){
+      for(Player p:n){
         novr.add(p.getOverall());
       }
       System.out.println("Golden State Warriors:");
-      for(int i=0;i< warriors.size();i++){
-        System.out.println(i+1+". "+warriors.get(i));
+      for(int i=0;i< w.size();i++){
+        System.out.println(i+1+". "+w.get(i));
       }
       System.out.println("Los Angeles Lakers:");
-      for(int i=0;i< lakers.size();i++){
-        System.out.println(i+1+". "+lakers.get(i));
+      for(int i=0;i< l.size();i++){
+        System.out.println(i+1+". "+l.get(i));
       }
       System.out.println("Memphis Grizzlies:");
-      for(int i=0;i< grizzlies.size();i++){
-        System.out.println(i+1+". "+grizzlies.get(i));
+      for(int i=0;i< g.size();i++){
+        System.out.println(i+1+". "+g.get(i));
       }
       System.out.println("Denver Nuggets:");
-      for(int i=0;i< nuggets.size();i++){
-        System.out.println(i+1+". "+nuggets.get(i));
+      for(int i=0;i< n.size();i++){
+        System.out.println(i+1+". "+n.get(i));
       }
       System.out.println("Which team do you want to play as?\n1. Golden State Warriors\n2. Los Angeles Lakers\n3. Memphis Grizzlies\n4. Denver Nuggets");
       if(input.nextLine().equals("1")){
         pteam=1;
       }
-      if(input.nextLine().equals("2")){
+      else if(input.nextLine().equals("2")){
         pteam=2;
       }
-      if(input.nextLine().equals("3")){
+      else if(input.nextLine().equals("3")){
         pteam=3;
       }
-      if(input.nextLine().equals("4")){
+      else if(input.nextLine().equals("4")){
         pteam=4;
       }
-      System.out.println("Which mode would you like to play?\n1. Simulate (Trade and draft players, rework your team, and simulate seasons)\n2. Practice(Choose a player and try their skills)");
+      System.out.println("Which mode would you like to play?\n1. Simulate (Trade and draft players, rework your team, and simulate seasons)\n2. Practice (Choose a player and try their skills)");
       if(input.nextLine().equals("1")){
-        simulate(pteam);
         isRunning=true;
+        simulate(pteam);
+
       }
-      else if(input.nextLine().equals("2")){
-        practice(pteam);
-      }
+//      else if(input.nextLine().equals("2")){
+//        practice(pteam);
+//      }
     }
     else{
       System.out.println("That's too bad.");
@@ -81,54 +83,509 @@ class Main {
   }
   public static void simulate(int t){
     int games=0;
+
+    if(t==1){
+      System.out.println("Welcome to simulation mode.\nYou are now the general manager of the Golden State Warriors.");
+      while(isRunning){
+        System.out.println("What would you like to do?\n1. View Roster\n2. Trade players\n3. Simulate Game\n4. Simulate Season\n5. Simulate Season + Playoffs\n6. Exit simulation");
+        if(input.nextLine().equals("1")){
+          System.out.println("Here is your current roster:");
+          for(int i=0;i< w.size();i++) {
+            System.out.println(i + 1 + ". " + w.get(i));
+          }
+          continue;
+        }
+        else if(input.nextLine().equals("2")){
+          System.out.println("safsfa");
+          trade(1);
+          continue;
+        }
+        else{
+          System.out.println("bruhhh");
+        }
+      }
+    }
+  }
+  public static void trade(int team){
     int wn;
     int gn;
     Player wants;
     Player gives;
-    if(t==1){
-      System.out.println("Welcome to simulation mode.\nYou are now the general manager of the Golden State Warriors.");
-      while(isRunning){
-        if(games==0){
-          System.out.println("        Preseason        \nWhat would you like to do?\n1. View Roster\n2. Trade players\n3. Simulate Game\n4. Simulate Season\n5. Simulate Season + Playoffs\n6. Exit simulation");
-          if(input.nextLine().equals("1")){
-            System.out.println("Here is your current roster:");
-            for(int i=0;i< warriors.size();i++) {
-              System.out.println(i + 1 + ". " + warriors.get(i));
-            }
+    System.out.println("Welcome to the trade menu!");
+    if(team==1) {
+      System.out.println("Which team would you like to trade with?\n1. LA Lakers\n2. Memphis Grizzlies\n3. Denver Nuggets");
+      if (input.nextLine().equals("1")) {
+        System.out.println("Here is the Lakers roster:");
+        for (int i = 0; i < l.size(); i++) {
+          System.out.println(i + 1 + ". " + l.get(i));
+        }
+        System.out.println("Which player would you like to trade for?\n(Numbers 1-15)");
+        wn = Integer.parseInt(input.nextLine()) - 1;
+        wants = l.get(wn);
+        System.out.println("Here is your team:");
+        for (int i = 0; i < w.size(); i++) {
+          System.out.println(i + 1 + ". " + w.get(i));
+        }
+        System.out.println("Which player will you give up?\n(Numbers 1-15)");
+        gn = Integer.parseInt(input.nextLine()) - 1;
+        gives = w.get(gn);
+        if (abs(wants.getOverall() - gives.getOverall()) <= 10) {
+          w.remove(gn);
+          w.add(wants);
+          l.remove(wn);
+          l.add(gives);
+          System.out.println("The Lakers have agreed to your trade!");
+        } else {
+          System.out.println("Unfortunately, the Lakers have declined your trade.");
+        }
+        System.out.println("Do you want to make another trade?");
+        if (yn(input.nextLine())) {
+          trade(team);
+        }
+        else{
+          System.out.println("Would you like to return to the menu?");
+          if(yn(input.nextLine())){
+            simulate(team);
           }
-          if(input.nextLine().equals("2")){
-            System.out.println("Which team would you like to trade with?\n1. LA Lakers\n2. Memphis Grizzlies\n3. Denver Nuggets");
-            if(input.nextLine().equals("1")){
-              System.out.println("Here is the Lakers roster:");
-              for(int i=0;i< lakers.size();i++){
-                System.out.println(i+1+". "+lakers.get(i));
-              }
-              System.out.println("Which player would you like to trade for?\n(Numbers 1-15)");
-              wn=Integer.parseInt(input.nextLine())-1;
-              wants=lakers.get(wn);
-              System.out.println("Here is your team:");
-              for(int i=0;i< warriors.size();i++) {
-                System.out.println(i + 1 + ". " + warriors.get(i));
-              }
-              System.out.println("Which player will you give up?\n(Numbers 1-15)");
-              gn=Integer.parseInt(input.nextLine())-1;
-              gives=warriors.get(gn);
-              if(abs(wants.getOverall()-gives.getOverall())<=10){
-                warriors.remove(gn);
-                warriors.add(wants);
-                lakers.remove(wn);
-                lakers.add(gives);
-                System.out.println("The Lakers have agreed to your trade!");
-              }
-              else{
-                System.out.println("Unfortunately, the Lakers have declined your trade.");
-              }
-              System.out.println("Do you want to make another trade?");
-              if()
-            }
+          else{
+            trade(team);
           }
         }
       }
+      if (input.nextLine().equals("2")) {
+        System.out.println("Here is the Grizzlies roster:");
+        for (int i = 0; i < g.size(); i++) {
+          System.out.println(i + 1 + ". " + g.get(i));
+        }
+        System.out.println("Which player would you like to trade for?\n(Numbers 1-15)");
+        wn = Integer.parseInt(input.nextLine()) - 1;
+        wants = g.get(wn);
+        System.out.println("Here is your team:");
+        for (int i = 0; i < w.size(); i++) {
+          System.out.println(i + 1 + ". " + w.get(i));
+        }
+        System.out.println("Which player will you give up?\n(Numbers 1-15)");
+        gn = Integer.parseInt(input.nextLine()) - 1;
+        gives = w.get(gn);
+        if (abs(wants.getOverall() - gives.getOverall()) <= 10) {
+          w.remove(gn);
+          w.add(wants);
+          g.remove(wn);
+          g.add(gives);
+          System.out.println("The Grizzlies have agreed to your trade!");
+        } else {
+          System.out.println("Unfortunately, the Grizzlies have declined your trade.");
+        }
+        System.out.println("Do you want to make another trade?");
+        if (yn(input.nextLine())) {
+          trade(team);
+        }
+        else{
+          System.out.println("Would you like to return to the menu?");
+          if(yn(input.nextLine())){
+            simulate(team);
+          }
+          else{
+            trade(team);
+          }
+        }
+      }
+      if (input.nextLine().equals("3")) {
+        System.out.println("Here is the Nuggets roster:");
+        for (int i = 0; i < n.size(); i++) {
+          System.out.println(i + 1 + ". " + n.get(i));
+        }
+        System.out.println("Which player would you like to trade for?\n(Numbers 1-15)");
+        wn = Integer.parseInt(input.nextLine()) - 1;
+        wants = n.get(wn);
+        System.out.println("Here is your team:");
+        for (int i = 0; i < w.size(); i++) {
+          System.out.println(i + 1 + ". " + w.get(i));
+        }
+        System.out.println("Which player will you give up?\n(Numbers 1-15)");
+        gn = Integer.parseInt(input.nextLine()) - 1;
+        gives = w.get(gn);
+        if (abs(wants.getOverall() - gives.getOverall()) <= 10) {
+          w.remove(gn);
+          w.add(wants);
+          n.remove(wn);
+          n.add(gives);
+          System.out.println("The Nuggets have agreed to your trade!");
+        } else {
+          System.out.println("Unfortunately, the Nuggets have declined your trade.");
+        }
+        System.out.println("Do you want to make another trade?");
+        if (yn(input.nextLine())) {
+          trade(team);
+        }
+        else{
+          System.out.println("Would you like to return to the menu?");
+          if(yn(input.nextLine())){
+            simulate(team);
+          }
+          else{
+            trade(team);
+          }
+        }
+      }
+      else{
+        System.out.println("Please pick the number of one of the teams.");
+        trade(team);
+      }
+    }
+    if(team==2) {
+      System.out.println("Which team would you like to trade with?\n1. Golden State Warriors\n2. Memphis Grizzlies\n3. Denver Nuggets");
+      if (input.nextLine().equals("1")) {
+        System.out.println("Here is the Warriors roster:");
+        for (int i = 0; i < w.size(); i++) {
+          System.out.println(i + 1 + ". " + w.get(i));
+        }
+        System.out.println("Which player would you like to trade for?\n(Numbers 1-15)");
+        wn = Integer.parseInt(input.nextLine()) - 1;
+        wants = w.get(wn);
+        System.out.println("Here is your team:");
+        for (int i = 0; i < l.size(); i++) {
+          System.out.println(i + 1 + ". " + l.get(i));
+        }
+        System.out.println("Which player will you give up?\n(Numbers 1-15)");
+        gn = Integer.parseInt(input.nextLine()) - 1;
+        gives = l.get(gn);
+        if (abs(wants.getOverall() - gives.getOverall()) <= 10) {
+          l.remove(gn);
+          l.add(wants);
+          w.remove(wn);
+          w.add(gives);
+          System.out.println("The Warriors have agreed to your trade!");
+        } else {
+          System.out.println("Unfortunately, the Warriors have declined your trade.");
+        }
+        System.out.println("Do you want to make another trade?");
+        if (yn(input.nextLine())) {
+          trade(team);
+        }
+        else{
+          System.out.println("Would you like to return to the menu?");
+          if(yn(input.nextLine())){
+            simulate(team);
+          }
+          else{
+            trade(team);
+          }
+        }
+      }
+      if (input.nextLine().equals("2")) {
+        System.out.println("Here is the Grizzlies roster:");
+        for (int i = 0; i < g.size(); i++) {
+          System.out.println(i + 1 + ". " + g.get(i));
+        }
+        System.out.println("Which player would you like to trade for?\n(Numbers 1-15)");
+        wn = Integer.parseInt(input.nextLine()) - 1;
+        wants = g.get(wn);
+        System.out.println("Here is your team:");
+        for (int i = 0; i < l.size(); i++) {
+          System.out.println(i + 1 + ". " + l.get(i));
+        }
+        System.out.println("Which player will you give up?\n(Numbers 1-15)");
+        gn = Integer.parseInt(input.nextLine()) - 1;
+        gives = l.get(gn);
+        if (abs(wants.getOverall() - gives.getOverall()) <= 10) {
+          l.remove(gn);
+          l.add(wants);
+          g.remove(wn);
+          g.add(gives);
+          System.out.println("The Grizzlies have agreed to your trade!");
+        } else {
+          System.out.println("Unfortunately, the Grizzlies have declined your trade.");
+        }
+        System.out.println("Do you want to make another trade?");
+        if (yn(input.nextLine())) {
+          trade(team);
+        }
+        else{
+          System.out.println("Would you like to return to the menu?");
+          if(yn(input.nextLine())){
+            simulate(team);
+          }
+          else{
+            trade(team);
+          }
+        }
+      }
+      if (input.nextLine().equals("3")) {
+        System.out.println("Here is the Nuggets roster:");
+        for (int i = 0; i < n.size(); i++) {
+          System.out.println(i + 1 + ". " + n.get(i));
+        }
+        System.out.println("Which player would you like to trade for?\n(Numbers 1-15)");
+        wn = Integer.parseInt(input.nextLine()) - 1;
+        wants = n.get(wn);
+        System.out.println("Here is your team:");
+        for (int i = 0; i < l.size(); i++) {
+          System.out.println(i + 1 + ". " + l.get(i));
+        }
+        System.out.println("Which player will you give up?\n(Numbers 1-15)");
+        gn = Integer.parseInt(input.nextLine()) - 1;
+        gives = l.get(gn);
+        if (abs(wants.getOverall() - gives.getOverall()) <= 10) {
+          l.remove(gn);
+          l.add(wants);
+          n.remove(wn);
+          n.add(gives);
+          System.out.println("The Nuggets have agreed to your trade!");
+        } else {
+          System.out.println("Unfortunately, the Nuggets have declined your trade.");
+        }
+        System.out.println("Do you want to make another trade?");
+        if (yn(input.nextLine())) {
+          trade(team);
+        }
+        else{
+          System.out.println("Would you like to return to the menu?");
+          if(yn(input.nextLine())){
+            simulate(team);
+          }
+          else{
+            trade(team);
+          }
+        }
+      }
+      else{
+        System.out.println("Please pick the number of one of the teams.");
+        trade(team);
+      }
+    }
+    if(team==3) {
+      System.out.println("Which team would you like to trade with?\n1. Golden State Warriors \n2. LA Lakers\n3. Denver Nuggets");
+      if (input.nextLine().equals("1")) {
+        System.out.println("Here is the Warriors roster:");
+        for (int i = 0; i < w.size(); i++) {
+          System.out.println(i + 1 + ". " + w.get(i));
+        }
+        System.out.println("Which player would you like to trade for?\n(Numbers 1-15)");
+        wn = Integer.parseInt(input.nextLine()) - 1;
+        wants = w.get(wn);
+        System.out.println("Here is your team:");
+        for (int i = 0; i < g.size(); i++) {
+          System.out.println(i + 1 + ". " + g.get(i));
+        }
+        System.out.println("Which player will you give up?\n(Numbers 1-15)");
+        gn = Integer.parseInt(input.nextLine()) - 1;
+        gives = g.get(gn);
+        if (abs(wants.getOverall() - gives.getOverall()) <= 10) {
+          g.remove(gn);
+          g.add(wants);
+          w.remove(wn);
+          w.add(gives);
+          System.out.println("The Warriors have agreed to your trade!");
+        } else {
+          System.out.println("Unfortunately, the Warriors have declined your trade.");
+        }
+        System.out.println("Do you want to make another trade?");
+        if (yn(input.nextLine())) {
+          trade(team);
+        } else {
+          System.out.println("Would you like to return to the menu?");
+          if (yn(input.nextLine())) {
+            simulate(team);
+          } else {
+            trade(team);
+          }
+        }
+      }
+      if (input.nextLine().equals("2")) {
+        System.out.println("Here is the Lakers roster:");
+        for (int i = 0; i < l.size(); i++) {
+          System.out.println(i + 1 + ". " + l.get(i));
+        }
+        System.out.println("Which player would you like to trade for?\n(Numbers 1-15)");
+        wn = Integer.parseInt(input.nextLine()) - 1;
+        wants = l.get(wn);
+        System.out.println("Here is your team:");
+        for (int i = 0; i < g.size(); i++) {
+          System.out.println(i + 1 + ". " + g.get(i));
+        }
+        System.out.println("Which player will you give up?\n(Numbers 1-15)");
+        gn = Integer.parseInt(input.nextLine()) - 1;
+        gives = g.get(gn);
+        if (abs(wants.getOverall() - gives.getOverall()) <= 10) {
+          g.remove(gn);
+          g.add(wants);
+          l.remove(wn);
+          l.add(gives);
+          System.out.println("The Lakers have agreed to your trade!");
+        } else {
+          System.out.println("Unfortunately, the Lakers have declined your trade.");
+        }
+        System.out.println("Do you want to make another trade?");
+        if (yn(input.nextLine())) {
+          trade(team);
+        } else {
+          System.out.println("Would you like to return to the menu?");
+          if (yn(input.nextLine())) {
+            simulate(team);
+          } else {
+            trade(team);
+          }
+        }
+      }
+      if (input.nextLine().equals("3")) {
+        System.out.println("Here is the Nuggets roster:");
+        for (int i = 0; i < n.size(); i++) {
+          System.out.println(i + 1 + ". " + n.get(i));
+        }
+        System.out.println("Which player would you like to trade for?\n(Numbers 1-15)");
+        wn = Integer.parseInt(input.nextLine()) - 1;
+        wants = n.get(wn);
+        System.out.println("Here is your team:");
+        for (int i = 0; i < g.size(); i++) {
+          System.out.println(i + 1 + ". " + g.get(i));
+        }
+        System.out.println("Which player will you give up?\n(Numbers 1-15)");
+        gn = Integer.parseInt(input.nextLine()) - 1;
+        gives = g.get(gn);
+        if (abs(wants.getOverall() - gives.getOverall()) <= 10) {
+          g.remove(gn);
+          g.add(wants);
+          n.remove(wn);
+          n.add(gives);
+          System.out.println("The Nuggets have agreed to your trade!");
+        } else {
+          System.out.println("Unfortunately, the Nuggets have declined your trade.");
+        }
+        System.out.println("Do you want to make another trade?");
+        if (yn(input.nextLine())) {
+          trade(team);
+        } else {
+          System.out.println("Would you like to return to the menu?");
+          if (yn(input.nextLine())) {
+            simulate(team);
+          } else {
+            trade(team);
+          }
+        }
+      }
+      else{
+        System.out.println("Please pick the number of one of the teams.");
+        trade(team);
+      }
+    }
+    if(team==4) {
+      System.out.println("Which team would you like to trade with?\n1. Golden State Warriors \n2. LA Lakers\n3. Memphis Grizzlies");
+      if (input.nextLine().equals("1")) {
+        System.out.println("Here is the Warriors roster:");
+        for (int i = 0; i < w.size(); i++) {
+          System.out.println(i + 1 + ". " + w.get(i));
+        }
+        System.out.println("Which player would you like to trade for?\n(Numbers 1-15)");
+        wn = Integer.parseInt(input.nextLine()) - 1;
+        wants = w.get(wn);
+        System.out.println("Here is your team:");
+        for (int i = 0; i < n.size(); i++) {
+          System.out.println(i + 1 + ". " + n.get(i));
+        }
+        System.out.println("Which player will you give up?\n(Numbers 1-15)");
+        gn = Integer.parseInt(input.nextLine()) - 1;
+        gives = n.get(gn);
+        if (abs(wants.getOverall() - gives.getOverall()) <= 10) {
+          n.remove(gn);
+          n.add(wants);
+          w.remove(wn);
+          w.add(gives);
+          System.out.println("The Warriors have agreed to your trade!");
+        } else {
+          System.out.println("Unfortunately, the Warriors have declined your trade.");
+        }
+        System.out.println("Do you want to make another trade?");
+        if (yn(input.nextLine())) {
+          trade(team);
+        } else {
+          System.out.println("Would you like to return to the menu?");
+          if (yn(input.nextLine())) {
+            simulate(team);
+          } else {
+            trade(team);
+          }
+        }
+      }
+      if (input.nextLine().equals("2")) {
+        System.out.println("Here is the Lakers roster:");
+        for (int i = 0; i < l.size(); i++) {
+          System.out.println(i + 1 + ". " + l.get(i));
+        }
+        System.out.println("Which player would you like to trade for?\n(Numbers 1-15)");
+        wn = Integer.parseInt(input.nextLine()) - 1;
+        wants = l.get(wn);
+        System.out.println("Here is your team:");
+        for (int i = 0; i < n.size(); i++) {
+          System.out.println(i + 1 + ". " + n.get(i));
+        }
+        System.out.println("Which player will you give up?\n(Numbers 1-15)");
+        gn = Integer.parseInt(input.nextLine()) - 1;
+        gives = n.get(gn);
+        if (abs(wants.getOverall() - gives.getOverall()) <= 10) {
+          n.remove(gn);
+          n.add(wants);
+          l.remove(wn);
+          l.add(gives);
+          System.out.println("The Lakers have agreed to your trade!");
+        } else {
+          System.out.println("Unfortunately, the Lakers have declined your trade.");
+        }
+        System.out.println("Do you want to make another trade?");
+        if (yn(input.nextLine())) {
+          trade(team);
+        } else {
+          System.out.println("Would you like to return to the menu?");
+          if (yn(input.nextLine())) {
+            simulate(team);
+          } else {
+            trade(team);
+          }
+        }
+      }
+      if (input.nextLine().equals("3")) {
+        System.out.println("Here is the Grizzlies roster:");
+        for (int i = 0; i < g.size(); i++) {
+          System.out.println(i + 1 + ". " + g.get(i));
+        }
+        System.out.println("Which player would you like to trade for?\n(Numbers 1-15)");
+        wn = Integer.parseInt(input.nextLine()) - 1;
+        wants =g.get(wn);
+        System.out.println("Here is your team:");
+        for (int i = 0; i < n.size(); i++) {
+          System.out.println(i + 1 + ". " + n.get(i));
+        }
+        System.out.println("Which player will you give up?\n(Numbers 1-15)");
+        gn = Integer.parseInt(input.nextLine()) - 1;
+        gives = n.get(gn);
+        if (abs(wants.getOverall() - gives.getOverall()) <= 10) {
+          n.remove(gn);
+          n.add(wants);
+          g.remove(wn);
+          g.add(gives);
+          System.out.println("The Nuggets have agreed to your trade!");
+        } else {
+          System.out.println("Unfortunately, the Nuggets have declined your trade.");
+        }
+        System.out.println("Do you want to make another trade?");
+        if (yn(input.nextLine())) {
+          trade(team);
+        } else {
+          System.out.println("Would you like to return to the menu?");
+          if (yn(input.nextLine())) {
+            simulate(team);
+          } else {
+            trade(team);
+          }
+        }
+      }
+      else{
+        System.out.println("Please pick the number of one of the teams.");
+        trade(team);
+      }
+    }
+    else{
+      System.out.println("error");
     }
   }
   public static void generatePlayers(){
@@ -137,16 +594,16 @@ class Main {
       for(int x=0;x<15;x++){
         String rname=randomName();
         if(i==0){
-          warriors.add(new Player(rname,(int)(Math.random()*19+19),(int)(Math.random()*21+67),(int)(Math.random()*133+150),(int)(Math.random()*50+50),(int)(Math.random()*50+50),(int)(Math.random()*50+50)));
+          w.add(new Player(rname,(int)(Math.random()*19+19),(int)(Math.random()*21+67),(int)(Math.random()*133+150),(int)(Math.random()*50+50),(int)(Math.random()*50+50),(int)(Math.random()*50+50)));
         }
         if(i==1){
-          lakers.add(new Player(rname,(int)(Math.random()*19+19),(int)(Math.random()*21+67),(int)(Math.random()*133+150),(int)(Math.random()*50+50),(int)(Math.random()*50+50),(int)(Math.random()*50+50)));
+          l.add(new Player(rname,(int)(Math.random()*19+19),(int)(Math.random()*21+67),(int)(Math.random()*133+150),(int)(Math.random()*50+50),(int)(Math.random()*50+50),(int)(Math.random()*50+50)));
         }
         if(i==2){
-          grizzlies.add(new Player(rname,(int)(Math.random()*19+19),(int)(Math.random()*21+67),(int)(Math.random()*133+150),(int)(Math.random()*50+50),(int)(Math.random()*50+50),(int)(Math.random()*50+50)));
+          g.add(new Player(rname,(int)(Math.random()*19+19),(int)(Math.random()*21+67),(int)(Math.random()*133+150),(int)(Math.random()*50+50),(int)(Math.random()*50+50),(int)(Math.random()*50+50)));
         }
         if(i==3){
-          nuggets.add(new Player(rname,(int)(Math.random()*19+19),(int)(Math.random()*21+67),(int)(Math.random()*133+150),(int)(Math.random()*50+50),(int)(Math.random()*50+50),(int)(Math.random()*50+50)));
+          n.add(new Player(rname,(int)(Math.random()*19+19),(int)(Math.random()*21+67),(int)(Math.random()*133+150),(int)(Math.random()*50+50),(int)(Math.random()*50+50),(int)(Math.random()*50+50)));
         }
       }
     }
@@ -175,6 +632,9 @@ class Main {
     String[] fns={"James","Robert","John","Michael","David","William","Richard","Joseph","Thomas","Daniel","Anthony","Mark","Steven","Paul","Andrew","George","Timothy","Jason","Ryan","Jacob","Gary","Eric","Larry","Scott","Justin","Frank","Brandon","Jack","Dennis","Jerry","Bob","Jeff","Lalith","Bryan"};
     String[] lns={"Smith","Johnson","Williams","Brown","Jones","Miller","Davis","Garcia","Lopez","Wilson","Anderson","Thomas","Jackson","Martin","Lee","Thompson","Harris","Clark","Lewis","Robinson","Walker","Allen","King","Wright","Scott","Torres","Hill","Adams","Olebe","Sasubili","Thai"};
     return fns[(int)(Math.random()*fns.length)]+" "+lns[(int)(Math.random()*lns.length)];
+  }
+  public static int abs(int z){
+    return java.lang.Math.abs(z);
   }
     
 }  
