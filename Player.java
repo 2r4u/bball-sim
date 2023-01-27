@@ -4,6 +4,7 @@ class Player extends Person {
   private int scoring;
   private int defense;
   private int teamwork;
+  private int overall;
   private int pos;
 
   public Player(String name, int age, int h, int w, int s, int d, int t) {
@@ -13,6 +14,7 @@ class Player extends Person {
     this.scoring = s;
     this.defense = d;
     this.teamwork = t;
+    this.overall=(int)((s+d+t)/3);
     if(height<81){
       if(weight<250){
         if(defense<teamwork){
@@ -70,6 +72,8 @@ class Player extends Person {
   public int getTeamwork() {
     return teamwork;
   }
-
+  public int getOverall(){
+    return overall;
+  }
 
 }
