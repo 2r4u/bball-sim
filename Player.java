@@ -36,21 +36,23 @@ class Player extends Person {
 
   public String toString() {
     if(pos==1) {
-      return (name + " is a " + age + " year old point guard who is "+height + " inches tall, and " + weight + " pounds.\nScoring: " + scoring + " Defense: " + defense + " Teamwork: " + teamwork);
+      return ("Name: "+name+" Age: "+age+" Position: Point guard Height: "+height + " inches Weight: " + weight + " lbs\nScoring: " + scoring + " Defense: " + defense + " Teamwork: " + teamwork+" Overall: "+overall);
     }
     if(pos==2) {
-      return (name + " is a " + age + " year old shooting guard who is "+height + " inches tall, and " + weight + " pounds.\nScoring: " + scoring + " Defense: " + defense + " Teamwork: " + teamwork);
+      return ("Name: "+name+" Age: "+age+" Position: Shooting guard Height: "+height + " inches Weight: " + weight + " lbs\nScoring: " + scoring + " Defense: " + defense + " Teamwork: " + teamwork+" Overall: "+overall);
     }
     if(pos==3) {
-      return (name + " is a " + age + " year old small forward who is "+height + " inches tall, and " + weight + " pounds.\nScoring: " + scoring + " Defense: " + defense + " Teamwork: " + teamwork);
+      return ("Name: "+name+" Age: "+age+" Position: Small forward Height: "+height + " inches Weight: " + weight + " lbs\nScoring: " + scoring + " Defense: " + defense + " Teamwork: " + teamwork+" Overall: "+overall);
     }
     if(pos==4) {
-      return (name + " is a " + age + " year old power forward who is "+height + " inches tall, and " + weight + " pounds.\nScoring: " + scoring + " Defense: " + defense + " Teamwork: " + teamwork);
+      return ("Name: "+name+" Age: "+age+" Position: Power forward Height: "+height + " inches Weight: " + weight + " lbs\nScoring: " + scoring + " Defense: " + defense + " Teamwork: " + teamwork+" Overall: "+overall);
     }
     if(pos==5) {
-      return (name + " is a " + age + " year old center who is "+height + " inches tall, and " + weight + " pounds.\nScoring: " + scoring + " Defense: " + defense + " Teamwork: " + teamwork);
+      return ("Name: "+name+" Age: "+age+" Position: Center Height: "+height + " inches Weight: " + weight + " lbs\nScoring: " + scoring + " Defense: " + defense + " Teamwork: " + teamwork+" Overall: "+overall);
     }
-    return("bruh");
+    else{
+      return("how?");
+    }
   }
 
   public int getHeight() {
