@@ -623,7 +623,7 @@ class Main {
     Player gives;
     System.out.println("Welcome to the trade menu!");
     if(team==1) {
-      System.out.println("Which team would you like to trade with?\n1. LA Lakers\n2. Memphis Grizzlies\n3. Denver Nuggets");
+      System.out.println("Which team would you like to trade with?\n1. LA Lakers\n2. Memphis Grizzlies\n3. Denver Nuggets\n4. Exit trade menu");
       try {
         response = Integer.parseInt(input.nextLine());
         if (response == 1) {
@@ -736,9 +736,15 @@ class Main {
               trade(team);
             }
           }
-        } else {
+        }
+        else {
           System.out.println("Please pick the number of one of the teams.");
-          trade(team);
+          System.out.println("Would you like to return to the menu?");
+          if (yn(input.nextLine())) {
+            simulate(team);
+          } else {
+            trade(team);
+          }
         }
       }
       catch(Exception e){
@@ -747,7 +753,7 @@ class Main {
       }
     }
     if(team==2) {
-      System.out.println("Which team would you like to trade with?\n1. Golden State Warriors\n2. Memphis Grizzlies\n3. Denver Nuggets");
+      System.out.println("Which team would you like to trade with?\n1. Golden State Warriors\n2. Memphis Grizzlies\n3. Denver Nuggets\n4. Exit trade menu");
       try {
         response = Integer.parseInt(input.nextLine());
         if (response == 1) {
@@ -862,8 +868,14 @@ class Main {
           }
         } else {
           System.out.println("Please pick the number of one of the teams.");
-          trade(team);
+          System.out.println("Would you like to return to the menu?");
+          if (yn(input.nextLine())) {
+            simulate(team);
+          } else {
+            trade(team);
+          }
         }
+
       }
       catch(Exception e){
         System.out.println("Please enter a number.");
@@ -871,7 +883,7 @@ class Main {
       }
     }
     if(team==3) {
-      System.out.println("Which team would you like to trade with?\n1. Golden State Warriors \n2. LA Lakers\n3. Denver Nuggets");
+      System.out.println("Which team would you like to trade with?\n1. Golden State Warriors \n2. LA Lakers\n3. Denver Nuggets\n4. Exit trade menu");
       try {
         response = Integer.parseInt(input.nextLine());
         if (response == 1) {
@@ -986,8 +998,12 @@ class Main {
           }
         } else {
           System.out.println("Please pick the number of one of the teams.");
-          trade(team);
-
+          System.out.println("Would you like to return to the menu?");
+          if (yn(input.nextLine())) {
+            simulate(team);
+          } else {
+            trade(team);
+          }
         }
       }
       catch(Exception e){
@@ -996,7 +1012,7 @@ class Main {
       }
     }
     if(team==4) {
-      System.out.println("Which team would you like to trade with?\n1. Golden State Warriors \n2. LA Lakers\n3. Memphis Grizzlies");
+      System.out.println("Which team would you like to trade with?\n1. Golden State Warriors \n2. LA Lakers\n3. Memphis Grizzlies\n4. Exit trade menu");
       try {
         response = Integer.parseInt(input.nextLine());
         if (response == 1) {
@@ -1109,10 +1125,16 @@ class Main {
               trade(team);
             }
           }
-        } else {
-          System.out.println("Please pick the number of one of the teams.");
-          trade(team);
         }
+          else {
+            System.out.println("Please pick the number of one of the teams.");
+            System.out.println("Would you like to return to the menu?");
+            if (yn(input.nextLine())) {
+              simulate(team);
+            } else {
+              trade(team);
+            }
+          }
       }
       catch(Exception e){
         System.out.println("Please enter a number.");
