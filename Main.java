@@ -1,5 +1,7 @@
+import java.io.IOException;
 import java.util.*;
 import java.lang.Math;
+
 class Main {
   public static Scanner input = new Scanner(System.in);
   public static int pteam=0;
@@ -19,8 +21,9 @@ class Main {
   public static ArrayList<Integer> novr=new ArrayList<>();
   public static int ntovr;
 
-  public static void main(String[] args) {
+  public static void main(String[] args){
     System.out.println("Welcome to the Basketball GM Sim!");
+    Graphics logo=new Graphics();
     System.out.println("Are you ready to begin? \n(Yes or No)");
     if(yn(input.nextLine())) {
       System.out.println("Awesome! Please wait while we prepare...");
