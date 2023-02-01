@@ -24,6 +24,7 @@ class Main {
   public static void main(String[] args){
     System.out.println("Welcome to the Basketball GM Sim!");
     Graphics logo=new Graphics();
+    logo.setImage("C:\\Users\\2r4u6\\IdeaProjects\\bball sim graphics\\src\\logo.gif");
     System.out.println("Are you ready to begin? \n(Yes or No)");
     if(yn(input.nextLine())) {
       System.out.println("Awesome! Please wait while we prepare...");
