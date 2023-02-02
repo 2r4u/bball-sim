@@ -29,6 +29,7 @@ class Graphics{
 
                 String text = input.getText();
                 Main.input(text);
+                input.setText("");
                 ar.countDown();
             }
             catch(Exception ex){

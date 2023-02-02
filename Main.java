@@ -25,7 +25,7 @@ class Main {
   public static String[] nums={"1","2","3","4","5","6","7","8","9","0"};
 
   public static void main(String[] args) throws InterruptedException{
-    Graphics.write("Welcome to the Basketball GM Sim!");
+    Graphics.write("Welcome to Basketball Simulator!");
     Graphics logo=new Graphics();
     logo.setImage("C:\\Users\\2r4u6\\IdeaProjects\\bball sim graphics\\src\\logo.gif");
     Graphics.write("Are you ready to begin? \n(Yes or No)");
@@ -321,8 +321,7 @@ class Main {
         Graphics.ar.await();
         pp = w.get(rn - 1);
         while(p2) {
-          Graphics.write("What do you want " + pp.getName() + " to practice?\n1" +
-                  "Graphics.ar.await();. Scoring\n2. Defense\n3. Teamwork\n4. Choose another player");
+          Graphics.write("What do you want " + pp.getName() + " to practice?\n1. Scoring\n2. Defense\n3. Teamwork\n4. Choose another player");
           if (rn == 1) {
             Graphics.write("What move do you want " + pp.getName() + " to practice?\n1" +
                     "Graphics.ar.await();. Layup\n2. Jumper\n3. Post hook\n4. Three pointer\n5. Practice menu");
@@ -678,16 +677,16 @@ class Main {
           for (int i = 0; i < l.size(); i++) {
             Graphics.write(i + 1 + ". " + l.get(i));
           }
-          Graphics.write("Which player would you like to trade for?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player would you like to trade for?\n(Numbers 1-15)");
+          Graphics.ar.await();
           wn = rn - 1;
           wants = l.get(wn);
           Graphics.write("Here is your team:");
           for (int i = 0; i < w.size(); i++) {
             Graphics.write(i + 1 + ". " + w.get(i));
           }
-          Graphics.write("Which player will you give up?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player will you give up?\n(Numbers 1-15)");
+          Graphics.ar.await();
           gn = rn - 1;
           gives = w.get(gn);
           if (abs(wants.getOverall() - gives.getOverall()) <=7) {
@@ -719,16 +718,16 @@ class Main {
           for (int i = 0; i < g.size(); i++) {
             Graphics.write(i + 1 + ". " + g.get(i));
           }
-          Graphics.write("Which player would you like to trade for?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player would you like to trade for?\n(Numbers 1-15)");
+          Graphics.ar.await();
           wn = rn - 1;
           wants = g.get(wn);
           Graphics.write("Here is your team:");
           for (int i = 0; i < w.size(); i++) {
             Graphics.write(i + 1 + ". " + w.get(i));
           }
-          Graphics.write("Which player will you give up?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player will you give up?\n(Numbers 1-15)");
+          Graphics.ar.await();
           gn = rn - 1;
           gives = w.get(gn);
           if (abs(wants.getOverall() - gives.getOverall()) <=7) {
@@ -760,16 +759,16 @@ class Main {
           for (int i = 0; i < n.size(); i++) {
             Graphics.write(i + 1 + ". " + n.get(i));
           }
-          Graphics.write("Which player would you like to trade for?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player would you like to trade for?\n(Numbers 1-15)");
+          Graphics.ar.await();
           wn = rn - 1;
           wants = n.get(wn);
           Graphics.write("Here is your team:");
           for (int i = 0; i < w.size(); i++) {
             Graphics.write(i + 1 + ". " + w.get(i));
           }
-          Graphics.write("Which player will you give up?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player will you give up?\n(Numbers 1-15)");
+          Graphics.ar.await();
           gn = rn - 1;
           gives = w.get(gn);
           if (abs(wants.getOverall() - gives.getOverall()) <=7) {
@@ -821,8 +820,8 @@ class Main {
           for (int i = 0; i < w.size(); i++) {
             Graphics.write(i + 1 + ". " + w.get(i));
           }
-          Graphics.write("Which player would you like to trade for?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player would you like to trade for?\n(Numbers 1-15)");
+          Graphics.ar.await();
           Graphics.ar.await();
           wn = rn - 1;
           wants = w.get(wn);
@@ -830,8 +829,8 @@ class Main {
           for (int i = 0; i < l.size(); i++) {
             Graphics.write(i + 1 + ". " + l.get(i));
           }
-          Graphics.write("Which player will you give up?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player will you give up?\n(Numbers 1-15)");
+          Graphics.ar.await();
           Graphics.ar.await();
           gn = rn - 1;
           gives = l.get(gn);
@@ -865,16 +864,16 @@ class Main {
           for (int i = 0; i < g.size(); i++) {
             Graphics.write(i + 1 + ". " + g.get(i));
           }
-          Graphics.write("Which player would you like to trade for?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player would you like to trade for?\n(Numbers 1-15)");
+          Graphics.ar.await();
           wn = rn - 1;
           wants = g.get(wn);
           Graphics.write("Here is your team:");
           for (int i = 0; i < l.size(); i++) {
             Graphics.write(i + 1 + ". " + l.get(i));
           }
-          Graphics.write("Which player will you give up?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player will you give up?\n(Numbers 1-15)");
+          Graphics.ar.await();
           gn = rn - 1;
           gives = l.get(gn);
           if (abs(wants.getOverall() - gives.getOverall()) <=7) {
@@ -906,16 +905,16 @@ class Main {
           for (int i = 0; i < n.size(); i++) {
             Graphics.write(i + 1 + ". " + n.get(i));
           }
-          Graphics.write("Which player would you like to trade for?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player would you like to trade for?\n(Numbers 1-15)");
+          Graphics.ar.await();
           wn = rn - 1;
           wants = n.get(wn);
           Graphics.write("Here is your team:");
           for (int i = 0; i < l.size(); i++) {
             Graphics.write(i + 1 + ". " + l.get(i));
           }
-          Graphics.write("Which player will you give up?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player will you give up?\n(Numbers 1-15)");
+          Graphics.ar.await();
           gn = rn - 1;
           gives = l.get(gn);
           if (abs(wants.getOverall() - gives.getOverall()) <=7) {
@@ -967,16 +966,16 @@ class Main {
           for (int i = 0; i < w.size(); i++) {
             Graphics.write(i + 1 + ". " + w.get(i));
           }
-          Graphics.write("Which player would you like to trade for?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player would you like to trade for?\n(Numbers 1-15)");
+          Graphics.ar.await();
           wn = rn - 1;
           wants = w.get(wn);
           Graphics.write("Here is your team:");
           for (int i = 0; i < g.size(); i++) {
             Graphics.write(i + 1 + ". " + g.get(i));
           }
-          Graphics.write("Which player will you give up?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player will you give up?\n(Numbers 1-15)");
+          Graphics.ar.await();
           gn = rn - 1;
           gives = g.get(gn);
           if (abs(wants.getOverall() - gives.getOverall()) <=7) {
@@ -1008,16 +1007,16 @@ class Main {
           for (int i = 0; i < l.size(); i++) {
             Graphics.write(i + 1 + ". " + l.get(i));
           }
-          Graphics.write("Which player would you like to trade for?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player would you like to trade for?\n(Numbers 1-15)");
+          Graphics.ar.await();
           wn = rn - 1;
           wants = l.get(wn);
           Graphics.write("Here is your team:");
           for (int i = 0; i < g.size(); i++) {
             Graphics.write(i + 1 + ". " + g.get(i));
           }
-          Graphics.write("Which player will you give up?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player will you give up?\n(Numbers 1-15)");
+          Graphics.ar.await();
           gn = rn - 1;
           gives = g.get(gn);
           if (abs(wants.getOverall() - gives.getOverall()) <=7) {
@@ -1049,16 +1048,16 @@ class Main {
           for (int i = 0; i < n.size(); i++) {
             Graphics.write(i + 1 + ". " + n.get(i));
           }
-          Graphics.write("Which player would you like to trade for?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player would you like to trade for?\n(Numbers 1-15)");
+          Graphics.ar.await();
           wn = rn - 1;
           wants = n.get(wn);
           Graphics.write("Here is your team:");
           for (int i = 0; i < g.size(); i++) {
             Graphics.write(i + 1 + ". " + g.get(i));
           }
-          Graphics.write("Which player will you give up?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player will you give up?\n(Numbers 1-15)");
+          Graphics.ar.await();
           gn = rn - 1;
           gives = g.get(gn);
           if (abs(wants.getOverall() - gives.getOverall()) <=7) {
@@ -1109,16 +1108,16 @@ class Main {
           for (int i = 0; i < w.size(); i++) {
             Graphics.write(i + 1 + ". " + w.get(i));
           }
-          Graphics.write("Which player would you like to trade for?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player would you like to trade for?\n(Numbers 1-15)");
+          Graphics.ar.await();
           wn = rn - 1;
           wants = w.get(wn);
           Graphics.write("Here is your team:");
           for (int i = 0; i < n.size(); i++) {
             Graphics.write(i + 1 + ". " + n.get(i));
           }
-          Graphics.write("Which player will you give up?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player will you give up?\n(Numbers 1-15)");
+          Graphics.ar.await();
           gn = rn - 1;
           gives = n.get(gn);
           if (abs(wants.getOverall() - gives.getOverall()) <=7) {
@@ -1150,16 +1149,16 @@ class Main {
           for (int i = 0; i < l.size(); i++) {
             Graphics.write(i + 1 + ". " + l.get(i));
           }
-          Graphics.write("Which player would you like to trade for?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player would you like to trade for?\n(Numbers 1-15)");
+          Graphics.ar.await();
           wn = rn - 1;
           wants = l.get(wn);
           Graphics.write("Here is your team:");
           for (int i = 0; i < n.size(); i++) {
             Graphics.write(i + 1 + ". " + n.get(i));
           }
-          Graphics.write("Which player will you give up?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player will you give up?\n(Numbers 1-15)");
+          Graphics.ar.await();
           gn = rn - 1;
           gives = n.get(gn);
           if (abs(wants.getOverall() - gives.getOverall()) <=7) {
@@ -1191,16 +1190,16 @@ class Main {
           for (int i = 0; i < g.size(); i++) {
             Graphics.write(i + 1 + ". " + g.get(i));
           }
-          Graphics.write("Which player would you like to trade for?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player would you like to trade for?\n(Numbers 1-15)");
+          Graphics.ar.await();
           wn = rn - 1;
           wants = g.get(wn);
           Graphics.write("Here is your team:");
           for (int i = 0; i < n.size(); i++) {
             Graphics.write(i + 1 + ". " + n.get(i));
           }
-          Graphics.write("Which player will you give up?\n(" +
-                  "Graphics.ar.await();Numbers 1-15)");
+          Graphics.write("Which player will you give up?\n(Numbers 1-15)");
+          Graphics.ar.await();
           gn = rn - 1;
           gives = n.get(gn);
           if (abs(wants.getOverall() - gives.getOverall()) <=7) {
