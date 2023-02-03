@@ -27,7 +27,7 @@ class Main {
   public static void main(String[] args) throws InterruptedException{
     Graphics.write("Welcome to Basketball Simulator!");
     Graphics logo=new Graphics();
-    logo.setImage("C:\\Users\\2r4u6\\IdeaProjects\\bball sim graphics\\src\\logo.gif");
+    logo.setImage("C:\\Users\\antho\\IdeaProjects\\bball sim graphics\\src\\logo.gif");
     Graphics.write("Are you ready to begin? \n(Yes or No)");
     Graphics.ar.await();
     if(yn(response)){
@@ -1307,7 +1307,7 @@ class Main {
     return fns[(int)(Math.random()*fns.length)]+" "+lns[(int)(Math.random()*lns.length)];
   }
   public static int abs(int z){
-    return java.lang.Math.abs(z);
+    return Math.abs(z);
   }
 
 }  

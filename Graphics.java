@@ -1,5 +1,6 @@
 
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.concurrent.CountDownLatch;
@@ -11,6 +12,7 @@ import java.util.concurrent.CountDownLatch;
  */
 
 class Graphics{
+    static Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
     static CountDownLatch ar;
     static Icon icon=new ImageIcon();
     static JFrame frame = new JFrame();
@@ -20,7 +22,10 @@ class Graphics{
     static JPanel ip = new JPanel();
     static JPanel tp=new JPanel();
     static JPanel op=new JPanel();
-    static JScrollPane scroll=new JScrollPane();
+    static JScrollPane scroll=new JScrollPane(output);
+    static JScrollBar vs=scroll.getVerticalScrollBar();
+    static int sw = (int)size.getWidth();
+    static int sh = (int)size.getHeight();
     Action action = new AbstractAction() {
         @Override
         public void actionPerformed(ActionEvent e){
@@ -37,45 +42,77 @@ class Graphics{
             }
         }
     };
+    MouseWheelListener mw = new MouseWheelListener() {
+        @Override
+        public void mouseWheelMoved(MouseWheelEvent e) {
+            scroll.dispatchEvent(e);
+        }
+    };
+    private static boolean isMaximized(int state) {
+        return (state & Frame.MAXIMIZED_BOTH) == Frame.MAXIMIZED_BOTH;
+    }
+
 
     public static final String newline="\n";
 
     public Graphics(){
-        frame.setSize(700,800);
+        frame.setSize(sw,sh);
         frame.setLayout(null);
 
-        Font font1 = new Font("SansSerif", Font.BOLD, 20);
-        Font font2 = new Font("SansSerif", Font.PLAIN, 20);
+        Font font1 = new Font("SansSerif", Font.BOLD, 30);
+        Font font2 = new Font("SansSerif", Font.PLAIN, 30);
 
-        tp.setSize(700,50);
-        tp.setLocation(0,700);
+
+        tp.setSize(sw,120);
+        tp.setLocation(0,980);
         input.setFont(font1);
-        input.setPreferredSize(new Dimension(700,50));
+        input.setPreferredSize(new Dimension(sw-30,50));
         input.addActionListener(action);
         tp.add(input);
         frame.add(tp);
 
-        ip.setSize(700,400);
+        ip.setSize(sw,400);
         ip.setLocation(0,0);
         ip.add(lbl);
         frame.add(ip);
 
-        op.setSize(700,300);
-        op.setLocation(0,400);
-        output.setPreferredSize(new Dimension(700,300));
+        op.setSize(sw,500);
+        op.setLocation(0,500);
+        output.setPreferredSize(new Dimension(sw-30,540));
         output.setEditable(false);
         output.setFont(font2);
         op.add(output);
-        op.add(scroll);
+
+        scroll.addMouseWheelListener(mw);
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll.setAutoscrolls(true);
         frame.add(op);
-
-
-
-
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        frame.setUndecorated(true);
         frame.setVisible(true);
+        input.requestFocusInWindow();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
+//    public static void maximize(int sw, int sh){
+//        frame.setSize(sw,sh);
+//        frame.setLayout(null);
+//
+//        Font font1 = new Font("SansSerif", Font.BOLD, 20);
+//        Font font2 = new Font("SansSerif", Font.PLAIN, 20);
+//
+//        tp.setSize(sw,120);
+//        tp.setLocation(0,980);
+//        input.setFont(font1);
+//        input.setPreferredSize(new Dimension(sw,100));
+//
+//        ip.setSize(sw,400);
+//        ip.setLocation(0,0);
+//
+//        op.setSize(sw,540);
+//        op.setLocation(0,540);
+//        output.setPreferredSize(new Dimension(sw,540));
+//    }
     public static void setImage(String filename){
         icon=new ImageIcon(filename);
         lbl.setIcon(icon);
