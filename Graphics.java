@@ -1,6 +1,5 @@
 
 import javax.swing.*;
-import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.concurrent.CountDownLatch;
@@ -59,26 +58,30 @@ class Graphics{
         frame.setSize(sw,sh);
         frame.setLayout(null);
 
-        Font font1 = new Font("SansSerif", Font.BOLD, 30);
-        Font font2 = new Font("SansSerif", Font.PLAIN, 30);
+        Font font1 = new Font("SansSerif", Font.BOLD, 27);
+        Font font2 = new Font("SansSerif", Font.PLAIN, 27);
 
+        tp.setBackground(new Color(128, 170, 255));
+        op.setBackground(new Color(128, 170, 255));
+        ip.setBackground(new Color(128, 170, 255));
 
-        tp.setSize(sw,120);
-        tp.setLocation(0,980);
+        tp.setSize(sw,(int)(sh*0.1));
+        tp.setLocation(0,(int)(sh*0.9));
+//
         input.setFont(font1);
-        input.setPreferredSize(new Dimension(sw-30,50));
+        input.setPreferredSize(new Dimension(sw-30,(int)(sh/21.6)));
         input.addActionListener(action);
         tp.add(input);
         frame.add(tp);
 
-        ip.setSize(sw,400);
+        ip.setSize(sw,(int)(400));
         ip.setLocation(0,0);
         ip.add(lbl);
         frame.add(ip);
 
-        op.setSize(sw,500);
-        op.setLocation(0,500);
-        output.setPreferredSize(new Dimension(sw-30,540));
+        op.setSize(sw,(int)(sh/2));
+        op.setLocation(0,(int)(sh*0.5));
+        output.setPreferredSize(new Dimension(sw-30,(int)(sh*0.4)));
         output.setEditable(false);
         output.setFont(font2);
         op.add(output);
@@ -115,6 +118,7 @@ class Graphics{
 //    }
     public static void setImage(String filename){
         icon=new ImageIcon(filename);
+//        lbl.setSize(new Dimension((int)(sw/3),(int)(sh*0.45)));
         lbl.setIcon(icon);
     }
     public static void write(String s){

@@ -27,7 +27,7 @@ class Main {
   public static void main(String[] args) throws InterruptedException{
     Graphics.write("Welcome to Basketball Simulator!");
     Graphics logo=new Graphics();
-    logo.setImage("C:\\Users\\antho\\IdeaProjects\\bball sim graphics\\src\\logo.gif");
+    logo.setImage("C:\\Users\\2r4u6\\IdeaProjects\\bball sim graphics\\src\\logo.gif");
     Graphics.write("Are you ready to begin? \n(Yes or No)");
     Graphics.ar.await();
     if(yn(response)){
@@ -150,8 +150,7 @@ class Main {
           } else if (mr == 2) {
             trade(1);
           } else if (mr == 3) {
-            Graphics.write("Which team would you like to play against?\n1" +
-                    "Graphics.ar.await();. LA Lakers\n2. Memphis Grizzlies\n3. Denver Nuggets");
+            Graphics.write("Which team would you like to play against?\n1. LA Lakers\n2. Memphis Grizzlies\n3. Denver Nuggets");
             Graphics.ar.await();
             try {
               mr = rn;
@@ -193,8 +192,7 @@ class Main {
           } else if (mr == 2) {
             trade(t);
           } else if (mr == 3) {
-            Graphics.write("Which team would you like to play against?\n1" +
-                    "Graphics.ar.await();. Golden State Warriors\n2. Memphis Grizzlies\n3. Denver Nuggets");
+            Graphics.write("Which team would you like to play against?\n1. Golden State Warriors\n2. Memphis Grizzlies\n3. Denver Nuggets");
             Graphics.ar.await();
             try {
               mr = rn;
@@ -238,8 +236,7 @@ class Main {
           } else if (mr == 2) {
             trade(t);
           } else if (mr == 3) {
-            Graphics.write("Which team would you like to play against?\n1" +
-                    "Graphics.ar.await();. Golden State Warriors\n2. LA Lakers\n3. Denver Nuggets");
+            Graphics.write("Which team would you like to play against?\n1. Golden State Warriors\n2. LA Lakers\n3. Denver Nuggets");
             Graphics.ar.await();
             try {
               mr = rn;
@@ -279,8 +276,7 @@ class Main {
           } else if (mr == 2) {
             trade(t);
           } else if (mr == 3) {
-            Graphics.write("Which team would you like to play against?\n1" +
-                    "Graphics.ar.await();. Golden State Warriors\n2. LA Lakers\n3. Memphis Grizzlies");
+            Graphics.write("Which team would you like to play against?\n1. Golden State Warriors\n2. LA Lakers\n3. Memphis Grizzlies");
             Graphics.ar.await();
             try {
               mr = rn;
@@ -322,9 +318,10 @@ class Main {
         pp = w.get(rn - 1);
         while(p2) {
           Graphics.write("What do you want " + pp.getName() + " to practice?\n1. Scoring\n2. Defense\n3. Teamwork\n4. Choose another player");
+          Graphics.ar.await();
           if (rn == 1) {
-            Graphics.write("What move do you want " + pp.getName() + " to practice?\n1" +
-                    "Graphics.ar.await();. Layup\n2. Jumper\n3. Post hook\n4. Three pointer\n5. Practice menu");
+            Graphics.write("What move do you want " + pp.getName() + " to practice?\n1. Layup\n2. Jumper\n3. Post hook\n4. Three pointer\n5. Practice menu");
+            Graphics.ar.await();
             if (rn == 5) {
               practice(team);
             } else {
@@ -332,8 +329,8 @@ class Main {
             }
           }
           else if (rn == 2) {
-            Graphics.write("What move do you want " + pp.getName() + " to practice?\n1" +
-                    "Graphics.ar.await();. Shot blocking\n2. Close-outs\n3. Help defense\n4. Zone defense\n5. Practice menu");
+            Graphics.write("What move do you want " + pp.getName() + " to practice?\n1. Shot blocking\n2. Close-outs\n3. Help defense\n4. Zone defense\n5. Practice menu");
+            Graphics.ar.await();
             if (rn == 5) {
               practice(team);
             } else {
@@ -341,8 +338,140 @@ class Main {
             }
           }
           else if (rn == 3) {
-            Graphics.write("What move do you want " + pp.getName() + " to practice?\n1" +
-                    "Graphics.ar.await();. Passing\n2. Rebounding\n3. Setting screens\n4. Pick-n-Roll\n5. Practice menu");
+            Graphics.write("What move do you want " + pp.getName() + " to practice?\n1. Passing\n2. Rebounding\n3. Setting screens\n4. Pick-n-Roll\n5. Practice menu");
+            Graphics.ar.await();
+            if (rn == 5) {
+              practice(team);
+            } else {
+              Graphics.write(pp.prac(3, rn));
+            }
+          }
+          else{
+            p2=false;
+          }
+        }
+        practice(team);
+      }
+      if (team == 2) {
+        Graphics.write("This is your current roster: ");
+        for (int i = 0; i < l.size(); i++) {
+          Graphics.write(i + 1 + ". " + l.get(i));
+        }
+        Graphics.write("Which player do you want to practice with?");
+        Graphics.ar.await();
+        pp = l.get(rn - 1);
+        while(p2) {
+          Graphics.write("What do you want " + pp.getName() + " to practice?\n1. Scoring\n2. Defense\n3. Teamwork\n4. Choose another player");
+          Graphics.ar.await();
+          if (rn == 1) {
+            Graphics.write("What move do you want " + pp.getName() + " to practice?\n1. Layup\n2. Jumper\n3. Post hook\n4. Three pointer\n5. Practice menu");
+            Graphics.ar.await();
+            if (rn == 5) {
+              practice(team);
+            } else {
+              Graphics.write(pp.prac(1, rn));
+            }
+          }
+          else if (rn == 2) {
+            Graphics.write("What move do you want " + pp.getName() + " to practice?\n1. Shot blocking\n2. Close-outs\n3. Help defense\n4. Zone defense\n5. Practice menu");
+            Graphics.ar.await();
+            if (rn == 5) {
+              practice(team);
+            } else {
+              Graphics.write(pp.prac(2, rn));
+            }
+          }
+          else if (rn == 3) {
+            Graphics.write("What move do you want " + pp.getName() + " to practice?\n1. Passing\n2. Rebounding\n3. Setting screens\n4. Pick-n-Roll\n5. Practice menu");
+            Graphics.ar.await();
+            if (rn == 5) {
+              practice(team);
+            } else {
+              Graphics.write(pp.prac(3, rn));
+            }
+          }
+          else{
+            p2=false;
+          }
+        }
+        practice(team);
+      }
+      if (team == 3) {
+        Graphics.write("This is your current roster: ");
+        for (int i = 0; i < g.size(); i++) {
+          Graphics.write(i + 1 + ". " + g.get(i));
+        }
+        Graphics.write("Which player do you want to practice with?");
+        Graphics.ar.await();
+        pp = g.get(rn - 1);
+        while(p2) {
+          Graphics.write("What do you want " + pp.getName() + " to practice?\n1. Scoring\n2. Defense\n3. Teamwork\n4. Choose another player");
+          Graphics.ar.await();
+          if (rn == 1) {
+            Graphics.write("What move do you want " + pp.getName() + " to practice?\n1. Layup\n2. Jumper\n3. Post hook\n4. Three pointer\n5. Practice menu");
+            Graphics.ar.await();
+            if (rn == 5) {
+              practice(team);
+            } else {
+              Graphics.write(pp.prac(1, rn));
+            }
+          }
+          else if (rn == 2) {
+            Graphics.write("What move do you want " + pp.getName() + " to practice?\n1. Shot blocking\n2. Close-outs\n3. Help defense\n4. Zone defense\n5. Practice menu");
+            Graphics.ar.await();
+            if (rn == 5) {
+              practice(team);
+            } else {
+              Graphics.write(pp.prac(2, rn));
+            }
+          }
+          else if (rn == 3) {
+            Graphics.write("What move do you want " + pp.getName() + " to practice?\n1. Passing\n2. Rebounding\n3. Setting screens\n4. Pick-n-Roll\n5. Practice menu");
+            Graphics.ar.await();
+            if (rn == 5) {
+              practice(team);
+            } else {
+              Graphics.write(pp.prac(3, rn));
+            }
+          }
+          else{
+            p2=false;
+          }
+        }
+        practice(team);
+      }
+      if (team == 4) {
+        Graphics.write("This is your current roster: ");
+        for (int i = 0; i < n.size(); i++) {
+          Graphics.write(i + 1 + ". " + n.get(i));
+        }
+        Graphics.write("Which player do you want to practice with?");
+        Graphics.ar.await();
+        pp = n.get(rn - 1);
+        while(p2) {
+          Graphics.write("What do you want " + pp.getName() + " to practice?\n1. Scoring\n2. Defense\n3. Teamwork\n4. Choose another player");
+          Graphics.ar.await();
+          if (rn == 1) {
+            Graphics.write("What move do you want " + pp.getName() + " to practice?\n1. Layup\n2. Jumper\n3. Post hook\n4. Three pointer\n5. Practice menu");
+            Graphics.ar.await();
+            if (rn == 5) {
+              practice(team);
+            } else {
+              Graphics.write(pp.prac(1, rn));
+            }
+          }
+          else if (rn == 2) {
+            Graphics.write("What move do you want " + pp.getName() + " to practice?\n1. Shot blocking\n2. Close-outs\n3. Help defense\n4. Zone defense\n5. Practice menu");
+            Graphics.ar.await();
+            if (rn == 5) {
+              practice(team);
+            } else {
+              Graphics.write(pp.prac(2, rn));
+            }
+          }
+          else if (rn == 3) {
+            Graphics.write("What move do you want " + pp.getName() + " to practice?\n1. Passing\n2. Rebounding\n3. Setting screens\n4. Pick-n-Roll\n5. Practice menu");
+            Graphics.ar.await();
             if (rn == 5) {
               practice(team);
             } else {
