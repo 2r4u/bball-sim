@@ -27,7 +27,7 @@ class Main {
   public static void main(String[] args) throws InterruptedException{
     Graphics.write("Welcome to Basketball Simulator!");
     Graphics logo=new Graphics();
-    logo.setImage("C:\\Users\\2r4u6\\IdeaProjects\\bball sim graphics\\src\\logo.gif");
+    logo.setImage("src/logo.gif",2);
     Graphics.write("Are you ready to begin? \n(Yes or No)");
     Graphics.ar.await();
     if(yn(response)){
@@ -77,10 +77,10 @@ class Main {
   public static void mainloop() throws InterruptedException{
     Graphics.write("Which team do you want to play as?\n1. Golden State Warriors\n2. Los Angeles Lakers\n3. Memphis Grizzlies\n4. Denver Nuggets");
     Graphics.ar.await();
-    Graphics.ar.await();
     try {
       if (rn==1) {
         pteam = 1;
+        Graphics.setImage("src/warriors.gif",2);
       }
       else if (rn==2){
         pteam = 2;
