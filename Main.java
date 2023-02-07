@@ -84,6 +84,7 @@ class Main {
       }
       else if (rn==2){
         pteam = 2;
+        Graphics.setImage("src/lakers.gif",2);
       }
       else if (rn==3){
         pteam = 3;
@@ -135,8 +136,7 @@ class Main {
     if(t==1){
       Graphics.write("Welcome to simulation mode.\nYou are now the general manager of the Golden State Warriors.");
       while(isRunning) {
-        Graphics.write("What would you like to do?\n1" +
-                "Graphics.ar.await();. View Roster\n2. Trade players\n3. Simulate Game\n4. Exit simulation");
+        Graphics.write("What would you like to do?\n1. View Roster\n2. Trade players\n3. Simulate Game\n4. Exit simulation");
         Graphics.ar.await();
         Graphics.ar.await();
         try {
@@ -178,8 +178,7 @@ class Main {
     else if(t==2){
       Graphics.write("Welcome to simulation mode.\nYou are now the general manager of the LA Lakers.");
       while(isRunning) {
-        Graphics.write("What would you like to do?\n1" +
-                "Graphics.ar.await();. View Roster\n2. Trade players\n3. Simulate Game\n4. Exit simulation");
+        Graphics.write("What would you like to do?\n1. View Roster\n2. Trade players\n3. Simulate Game\n4. Exit simulation");
         Graphics.ar.await();
         try {
           mr = rn;
@@ -222,8 +221,7 @@ class Main {
     else if(t==3) {
       Graphics.write("Welcome to simulation mode.\nYou are now the general manager of the Memphis Grizzlies.");
       while (isRunning) {
-        Graphics.write("What would you like to do?\n1" +
-                "Graphics.ar.await();. View Roster\n2. Trade players\n3. Simulate Game\n4. Exit simulation");
+        Graphics.write("What would you like to do?\n1. View Roster\n2. Trade players\n3. Simulate Game\n4. Exit simulation");
         Graphics.ar.await();
         try {
           mr = rn;
@@ -263,8 +261,7 @@ class Main {
     else if(t==4) {
       Graphics.write("Welcome to simulation mode.\nYou are now the general manager of the Denver Nuggets.");
       while (isRunning) {
-        Graphics.write("What would you like to do?\n1" +
-                "Graphics.ar.await();. View Roster\n2. Trade players\n3. Simulate Game\n4. Exit simulation");
+        Graphics.write("What would you like to do?\n1. View Roster\n2. Trade players\n3. Simulate Game\n4. Exit simulation");
         Graphics.ar.await();
         try {
           mr = rn;
@@ -1411,7 +1408,7 @@ class Main {
     }
   }
   public static boolean yn(String str){
-    String[] ys={"yes","y","yup","yeah"};
+    String[] ys={"yes","y","yup","yeah","sure"};
     String[] ns={"no","n","nope","nah"};
     for(int i=0;i<4;i++){
       if(str.toLowerCase().equals(ys[i])){
