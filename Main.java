@@ -1,5 +1,6 @@
 import java.util.*;
 import java.lang.Math;
+import java.util.concurrent.TimeUnit;
 
 class Main {
   public static Scanner input = new Scanner(System.in);
@@ -21,7 +22,7 @@ class Main {
   public static ArrayList<Player> n=new ArrayList<>();
   public static ArrayList<Integer> novr=new ArrayList<>();
   public static int ntovr;
-
+  public static String[] timgs ={"src/logo.gif","src/warriors.gif","src/lakers.gif","src/grizzlies.gif","src/nuggets.gif"};
   public static String[] nums={"1","2","3","4","5","6","7","8","9","0"};
 
   public static void main(String[] args) throws InterruptedException{
@@ -83,19 +84,19 @@ class Main {
     try {
       if (rn==1) {
         pteam = 1;
-        Graphics.setImage("src/warriors.gif",2);
+        Graphics.setImage(timgs[pteam],2);
       }
       else if (rn==2){
         pteam = 2;
-        Graphics.setImage("src/lakers.gif",2);
+        Graphics.setImage(timgs[pteam],2);
       }
       else if (rn==3){
         pteam = 3;
-        Graphics.setImage("src/grizzlies.gif",2);
+        Graphics.setImage(timgs[pteam],2);
       }
       else if (rn==4){
         pteam = 4;
-        Graphics.setImage("src/nuggets.gif",2);
+        Graphics.setImage(timgs[pteam],2);
       }
       else{
         Graphics.write("Please choose a team.");
@@ -143,7 +144,6 @@ class Main {
       while(isRunning) {
         Graphics.write("What would you like to do?\n1. View Roster\n2. Trade players\n3. Simulate Game\n4. Exit simulation");
         Graphics.ar.await();
-        Graphics.ar.await();
         try {
           mr = rn;
           if (mr == 1) {
@@ -151,7 +151,6 @@ class Main {
             for (int i = 0; i < w.size(); i++) {
               Graphics.write(i + 1 + ". " + w.get(i));
             }
-
           } else if (mr == 2) {
             trade(1);
           } else if (mr == 3) {
@@ -165,14 +164,17 @@ class Main {
               simulate(t);
             }
           }
-          else if(mr==4){
+          else{
             if(eq()){
+              Graphics.write("Have a good day!");
+              System.exit(0);
+            }
+            else {
               mainloop();
             }
           }
-          else {
-            Graphics.write("bruhhh");
-          }
+
+
         }
         catch(Exception e){
           Graphics.write("Please enter a number.");
@@ -210,11 +212,11 @@ class Main {
           }
           else if(mr==4){
             if(eq()){
-              mainloop();
+              System.exit(0);
             }
           }
           else {
-            Graphics.write("bruhhh");
+            mainloop();
           }
         }
         catch(Exception e){
@@ -252,10 +254,10 @@ class Main {
 
           } else if (mr == 4) {
             if (eq()) {
-              mainloop();
+              System.exit(0);
             }
           } else {
-            Graphics.write("bruhhh");
+            mainloop();
           }
         } catch (Exception e) {
           Graphics.write("Please enter a number.");
@@ -289,10 +291,10 @@ class Main {
             }
           } else if (mr == 4) {
             if (eq()) {
-              mainloop();
+              System.exit(0);
             }
           } else {
-            Graphics.write("bruhhh");
+            mainloop();
           }
         } catch (Exception e) {
           Graphics.write("Please enter a number.");
@@ -503,13 +505,18 @@ class Main {
       }
     }
   }
-  public static void simgame(int team, int opteam){
+  public static void simgame(int team, int opteam) throws InterruptedException{
+    int otn;
     int ts=(int)(Math.random()*30+90);
     int sd=(int)(Math.random()*20+1);
+    Graphics.setImage(timgs[team],1);
+    Graphics.setImage("src/vs.gif",2);
     if(team==1) {
+      otn=opteam+1;
+      Graphics.setImage(timgs[otn],3);
       if (opteam == 1) {
         Graphics.write("Simulating game against the LA Lakers...");
-
+        TimeUnit.SECONDS.sleep(3);
         if(wtovr>ltovr){
           if((int)(Math.random()*100)>40){
             Graphics.write("Your Golden State Warriors defeat the LA Lakers!");
@@ -532,7 +539,7 @@ class Main {
       }
       if (opteam == 2) {
         Graphics.write("Simulating game against the Memphis Grizzlies...");
-
+        TimeUnit.SECONDS.sleep(3);
         if(wtovr>gtovr){
           if((int)(Math.random()*100)>40){
             Graphics.write("Your Golden State Warriors defeat the Memphis Grizzlies!");
@@ -555,7 +562,7 @@ class Main {
       }
       if (opteam == 3) {
         Graphics.write("Simulating game against the Denver Nuggets...");
-
+        TimeUnit.SECONDS.sleep(3);
         if(wtovr>ntovr){
           if((int)(Math.random()*100)>40){
             Graphics.write("Your Golden State Warriors defeat the Denver Nuggets!");
@@ -578,9 +585,12 @@ class Main {
       }
     }
     if(team==2) {
+      otn=opteam+1;
+      Graphics.setImage(timgs[otn],3);
       if (opteam == 1) {
+        Graphics.setImage(timgs[opteam],3);
         Graphics.write("Simulating game against the Golden State Warriors...");
-
+        TimeUnit.SECONDS.sleep(3);
         if(ltovr>wtovr){
           if((int)(Math.random()*100)>40){
             Graphics.write("Your LA Lakers defeat the Golden State Warriors!");
@@ -603,7 +613,7 @@ class Main {
       }
       if (opteam == 2) {
         Graphics.write("Simulating game against the Memphis Grizzlies...");
-
+        TimeUnit.SECONDS.sleep(3);
         if(ltovr>gtovr){
           if((int)(Math.random()*100)>40){
             Graphics.write("Your LA Lakers defeat the Memphis Grizzlies!");
@@ -626,7 +636,7 @@ class Main {
       }
       if (opteam == 3) {
         Graphics.write("Simulating game against the Denver Nuggets...");
-
+        TimeUnit.SECONDS.sleep(3);
         if(ltovr>ntovr){
           if((int)(Math.random()*100)>40){
             Graphics.write("Your LA Lakers defeat the Denver Nuggets!");
@@ -650,8 +660,9 @@ class Main {
     }
     if(team==3) {
       if (opteam == 1) {
+        Graphics.setImage(timgs[opteam],3);
         Graphics.write("Simulating game against the Golden State Warriors...");
-
+        TimeUnit.SECONDS.sleep(3);
         if(gtovr>wtovr){
           if((int)(Math.random()*100)>40){
             Graphics.write("Your Memphis Grizzlies defeat the Golden State Warriors!");
@@ -673,8 +684,9 @@ class Main {
 
       }
       if (opteam == 2) {
+        Graphics.setImage(timgs[opteam],3);
         Graphics.write("Simulating game against the LA Lakers...");
-
+        TimeUnit.SECONDS.sleep(3);
         if(gtovr>ltovr){
           if((int)(Math.random()*100)>40){
             Graphics.write("Your Memphis Grizzlies defeat the LA Lakers!");
@@ -696,8 +708,9 @@ class Main {
 
       }
       if (opteam == 3) {
+        Graphics.setImage(timgs[opteam+1],3);
         Graphics.write("Simulating game against the Denver Nuggets...");
-
+        TimeUnit.SECONDS.sleep(3);
         if(gtovr>ntovr){
           if((int)(Math.random()*100)>40){
             Graphics.write("Your Memphis Grizzlies defeat the Denver Nuggets!");
@@ -721,8 +734,9 @@ class Main {
     }
     if(team==4) {
       if (opteam == 1) {
+        Graphics.setImage(timgs[opteam],3);
         Graphics.write("Simulating game against the Golden State Warriors...");
-
+        TimeUnit.SECONDS.sleep(3);
         if(ntovr>wtovr){
           if((int)(Math.random()*100)>40){
             Graphics.write("Your Denver Nuggets defeat the Golden State Warriors!");
@@ -744,8 +758,9 @@ class Main {
 
       }
       if (opteam == 2) {
+        Graphics.setImage(timgs[opteam],3);
         Graphics.write("Simulating game against the LA Lakers...");
-
+        TimeUnit.SECONDS.sleep(3);
         if(ntovr>ltovr){
           if((int)(Math.random()*100)>40){
             Graphics.write("Your Denver Nuggets defeat the LA Lakers!");
@@ -767,8 +782,9 @@ class Main {
 
       }
       if (opteam == 3) {
+        Graphics.setImage(timgs[opteam],3);
         Graphics.write("Simulating game against the Memphis Grizzlies...");
-
+        TimeUnit.SECONDS.sleep(3);
         if(gtovr>ntovr){
           if((int)(Math.random()*100)>40){
             Graphics.write("Your Denver Nuggets defeat the Memphis Grizzlies!");
