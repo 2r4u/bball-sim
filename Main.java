@@ -54,6 +54,9 @@ class Main {
         Graphics.write("Have a good day!");
         System.exit(0);
       }
+      else{
+        mainloop();
+      }
     }
   }
   public static void input(String r) throws InterruptedException{
@@ -88,9 +91,11 @@ class Main {
       }
       else if (rn==3){
         pteam = 3;
+        Graphics.setImage("src/grizzlies.gif",2);
       }
       else if (rn==4){
         pteam = 4;
+        Graphics.setImage("src/nuggets.gif",2);
       }
       else{
         Graphics.write("Please choose a team.");

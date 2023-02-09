@@ -58,7 +58,9 @@ class Graphics{
 
 //        tp.setBackground(new Color(128, 170, 255));
 //        op.setBackground(new Color(128, 170, 255));
-//        ip.setBackground(new Color(128, 170, 255));
+        ip1.setBackground(Color.white);
+        ip2.setBackground(Color.white);
+        ip3.setBackground(Color.white);
 
         tp.setSize(sw,(int)(sh*0.1));
         tp.setLocation(0,(int)(sh*0.9));
