@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 class Main {
   public static Scanner input = new Scanner(System.in);
+  public static Graphics graphics=new Graphics();
   public static String response;
   public static int rn;
   public static int pteam=0;
@@ -24,11 +25,12 @@ class Main {
   public static int ntovr;
   public static String[] timgs ={"src/logo.gif","src/warriors.gif","src/lakers.gif","src/grizzlies.gif","src/nuggets.gif"};
   public static String[] nums={"1","2","3","4","5","6","7","8","9","0"};
-
+  public static Audio vineboom=new Audio("src/vine-boom.wav");
+  public static Audio bgmusic = new Audio("src/bgmusic.wav");
   public static void main(String[] args) throws InterruptedException{
+    bgmusic.playloop();
     Graphics.write("Welcome to Basketball Simulator!");
-    Graphics logo=new Graphics();
-    logo.setImage("src/logo.gif",2);
+    Graphics.setImage("src/logo.gif",2);
     Graphics.write("Are you ready to begin? \n(Yes or No)");
     Graphics.ar.await();
     if(yn(response)){
@@ -120,7 +122,16 @@ class Main {
       else if(rn==2){
         practice(pteam);
       }
-
+      else{
+        Graphics.write("Please choose an option.");
+        if(eq()){
+          Graphics.write("Have a good day!");
+          System.exit(0);
+        }
+        else{
+          mainloop();
+        }
+      }
     }
     catch(Exception e){
       Graphics.write("Please enter an number.");
@@ -132,10 +143,6 @@ class Main {
         mainloop();
       }
     }
-//      else if(input.nextLine().equals("2")){
-//        practice(pteam);
-//      }
-
   }
   public static void simulate(int t) throws InterruptedException{
     int mr;
@@ -525,6 +532,7 @@ class Main {
             Graphics.write("The LA Lakers defeat your Golden State Warriors.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
         if(ltovr>wtovr){
           if((int)(Math.random()*100)<40){
@@ -534,6 +542,7 @@ class Main {
             Graphics.write("The LA Lakers defeat your Golden State Warriors.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
 
       }
@@ -548,6 +557,7 @@ class Main {
             Graphics.write("The Memphis Grizzlies defeat your Golden State Warriors.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
         if(gtovr>wtovr){
           if((int)(Math.random()*100)<40){
@@ -557,6 +567,7 @@ class Main {
             Graphics.write("The Memphis Grizzlies defeat your Golden State Warriors.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
 
       }
@@ -571,6 +582,7 @@ class Main {
             Graphics.write("The Denver Nuggets defeat your Golden State Warriors.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
         if(ntovr>wtovr){
           if((int)(Math.random()*100)<40){
@@ -580,6 +592,7 @@ class Main {
             Graphics.write("The Denver Nuggets defeat your Golden State Warriors.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
 
       }
@@ -599,6 +612,7 @@ class Main {
             Graphics.write("The Golden State Warriors defeat your LA Lakers.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
         if(wtovr>ltovr){
           if((int)(Math.random()*100)<40){
@@ -608,6 +622,7 @@ class Main {
             Graphics.write("The Golden State Warriors defeat your LA Lakers.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
 
       }
@@ -622,6 +637,7 @@ class Main {
             Graphics.write("The Memphis Grizzlies defeat your LA Lakers.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
         if(gtovr>ltovr){
           if((int)(Math.random()*100)<40){
@@ -631,6 +647,7 @@ class Main {
             Graphics.write("The Memphis Grizzlies your LA Lakers.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
 
       }
@@ -645,6 +662,7 @@ class Main {
             Graphics.write("The Denver Nuggets defeat your LA Lakers.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
         if(ntovr>ltovr){
           if((int)(Math.random()*100)<40){
@@ -654,6 +672,7 @@ class Main {
             Graphics.write("The Denver Nuggets defeat your LA Lakers.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
 
       }
@@ -671,6 +690,7 @@ class Main {
             Graphics.write("The Golden State Warriors defeat your Memphis Grizzlies.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
         if(wtovr>gtovr){
           if((int)(Math.random()*100)<40){
@@ -680,6 +700,7 @@ class Main {
             Graphics.write("The Golden State Warriors defeat your Memphis Grizzlies.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
 
       }
@@ -695,6 +716,7 @@ class Main {
             Graphics.write("The LA Lakers defeat your Memphis Grizzlies.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
         if(ltovr>gtovr){
           if((int)(Math.random()*100)<40){
@@ -704,6 +726,7 @@ class Main {
             Graphics.write("The LA Lakers defeat your Memphis Grizzlies.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
 
       }
@@ -719,6 +742,7 @@ class Main {
             Graphics.write("The Denver Nuggets defeat your Memphis Grizzlies.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
         if(ntovr>gtovr){
           if((int)(Math.random()*100)<40){
@@ -728,6 +752,7 @@ class Main {
             Graphics.write("The Denver Nuggets defeat your Memphis Grizzlies.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
 
       }
@@ -745,6 +770,7 @@ class Main {
             Graphics.write("The Golden State Warriors defeat your Denver Nuggets.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
         if(wtovr>ntovr){
           if((int)(Math.random()*100)<40){
@@ -754,6 +780,7 @@ class Main {
             Graphics.write("The Golden State Warriors defeat your Denver Nuggets.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
 
       }
@@ -769,6 +796,7 @@ class Main {
             Graphics.write("The LA Lakers defeat your Denver Nuggets.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
         if(ltovr>ntovr){
           if((int)(Math.random()*100)<40){
@@ -778,6 +806,7 @@ class Main {
             Graphics.write("The LA Lakers defeat your Denver Nuggets.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
 
       }
@@ -793,6 +822,7 @@ class Main {
             Graphics.write("The Memphis Grizzlies defeat your Denver Nuggets.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
         if(ntovr>gtovr){
           if((int)(Math.random()*100)<40){
@@ -802,6 +832,7 @@ class Main {
             Graphics.write("The Memphis Grizzlies defeat your Denver Nuggets.");
           }
           Graphics.write("Final Score: "+ts+"-"+(ts-sd));
+          Graphics.reset(team);
         }
 
       }
