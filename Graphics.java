@@ -35,12 +35,7 @@ class Graphics{
             }
         }
     };
-    MouseWheelListener mw = new MouseWheelListener() {
-        @Override
-        public void mouseWheelMoved(MouseWheelEvent e) {
-            scroll.dispatchEvent(e);
-        }
-    };
+    MouseWheelListener mw = e -> scroll.dispatchEvent(e);
 //    private static boolean isMaximized(int state) {
 //        return (state & Frame.MAXIMIZED_BOTH) == Frame.MAXIMIZED_BOTH;
 //    }
@@ -48,57 +43,62 @@ class Graphics{
 
     public static final String newline="\n";
 
-    public Graphics(){
-        frame.setSize(sw,sh);
-        frame.setLayout(null);
+    public Graphics(int t){
 
-        Font font1 = new Font("SansSerif", Font.BOLD, 27);
-        Font font2 = new Font("SansSerif", Font.PLAIN, 27);
+        if(t==1){
+            frame.setName("Basketball Simulator");
+            frame.setSize(sw,sh);
+            frame.setLayout(null);
+            Font font1 = new Font("SansSerif", Font.BOLD, 27);
+            Font font2 = new Font("SansSerif", Font.PLAIN, 27);
 
 //        tp.setBackground(new Color(128, 170, 255));
 //        op.setBackground(new Color(128, 170, 255));
-        ip1.setBackground(Color.white);
-        ip2.setBackground(Color.white);
-        ip3.setBackground(Color.white);
+            ip1.setBackground(Color.white);
+            ip2.setBackground(Color.white);
+            ip3.setBackground(Color.white);
 
-        tp.setSize(sw,(int)(sh*0.1));
-        tp.setLocation(0,(int)(sh*0.9));
-        input.setFont(font1);
-        input.setPreferredSize(new Dimension(sw-30,(int)(sh/21.6)));
-        input.addActionListener(action);
-        tp.add(input);
-        frame.add(tp);
+            tp.setSize(sw,(int)(sh*0.1));
+            tp.setLocation(0,(int)(sh*0.9));
+            input.setFont(font1);
+            input.setPreferredSize(new Dimension(sw-30,(int)(sh/21.6)));
+            input.addActionListener(action);
+            tp.add(input);
+            frame.add(tp);
 
-        ip1.setSize((sw/3),(sh/2));
-        ip1.setLocation(0,0);
-        ip1.add(i1);
-        frame.add(ip1);
+            ip1.setSize((sw/3),(sh/2));
+            ip1.setLocation(0,0);
+            ip1.add(i1);
+            frame.add(ip1);
 
-        ip2.setSize((sw/3),(sh/2));
-        ip2.setLocation((sw/3),0);
-        ip2.add(i2);
-        frame.add(ip2);
+            ip2.setSize((sw/3),(sh/2));
+            ip2.setLocation((sw/3),0);
+            ip2.add(i2);
+            frame.add(ip2);
 
-        ip3.setSize((sw/3),(sh/2));
-        ip3.setLocation((2*(sw/3)),0);
-        ip3.add(i3);
-        frame.add(ip3);
+            ip3.setSize((sw/3),(sh/2));
+            ip3.setLocation((2*(sw/3)),0);
+            ip3.add(i3);
+            frame.add(ip3);
 
-        op.setSize(sw,(sh/2));
-        op.setLocation(0,(int)(sh*0.5));
-        output.setPreferredSize(new Dimension(sw-30,(int)(sh*0.4)));
-        output.setEditable(false);
-        output.setFont(font2);
-        op.add(output);
+            op.setSize(sw,(sh/2));
+            op.setLocation(0,(int)(sh*0.5));
+            output.setPreferredSize(new Dimension(sw-30,(int)(sh*0.4)));
+            output.setEditable(false);
+            output.setFont(font2);
+            op.add(output);
 
-        scroll.addMouseWheelListener(mw);
-        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scroll.setAutoscrolls(true);
-        frame.add(op);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setVisible(true);
-        input.requestFocusInWindow();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            scroll.addMouseWheelListener(mw);
+            scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            scroll.setAutoscrolls(true);
+            frame.add(op);
+            frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            frame.setVisible(true);
+            input.requestFocusInWindow();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        } else if (t==2) {
+            //add trade gui layout here
+        }
 
     }
     public static void reset(int t){
@@ -133,7 +133,5 @@ class Graphics{
     public static void write(String s){
         output.append(s+newline);
         ar=new CountDownLatch(1);
-        //Make sure the new text is visible, even if there
-        //was a selection in the text area.
     }
 }

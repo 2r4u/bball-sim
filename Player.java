@@ -147,6 +147,7 @@ class Player extends Person {
     return("how?");
 
   }
+  @Override
   public String toString() {
     if(pos==1) {
       return ("Name: "+name+" Age: "+age+" Position: Point guard Height: "+height + " inches Weight: " + weight + " lbs\nScoring: " + scoring + " Defense: " + defense + " Teamwork: " + teamwork+" Overall: "+overall);
@@ -164,7 +165,7 @@ class Player extends Person {
       return ("Name: "+name+" Age: "+age+" Position: Center Height: "+height + " inches Weight: " + weight + " lbs\nScoring: " + scoring + " Defense: " + defense + " Teamwork: " + teamwork+" Overall: "+overall);
     }
     else{
-      return("how?");
+      return(super.toString());
     }
   }
 

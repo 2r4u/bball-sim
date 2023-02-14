@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 class Main {
   public static Scanner input = new Scanner(System.in);
-  public static Graphics graphics=new Graphics();
+  public static Graphics graphics=new Graphics(1);
   public static String response;
   public static int rn;
   public static int pteam=0;
